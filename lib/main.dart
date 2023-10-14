@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:catch_me/cubit/cubit.dart';
 import 'package:catch_me/cubit/states.dart';
+import 'package:catch_me/score.dart';
 
 import 'package:flutter/material.dart';
 //import 'package:flutter/src/widgets/container.dart';
@@ -61,13 +62,15 @@ class _Anumation1State extends State<Anumation1> {
                     Builder(
                       builder: (cz) => IconButton(
                           onPressed: () {
-                            Navigator.pushReplacement(cz,
-                                MaterialPageRoute(builder: (_) {
-                              return const Anumation1();
+                            Navigator.push(cz, MaterialPageRoute(builder: (_) {
+                              return Score(score: cub.i);
                             }));
                             cub.restart();
                           },
-                          icon: const Icon(Icons.play_arrow)),
+                          icon: const Icon(
+                            Icons.play_arrow,
+                            color: Colors.black,
+                          )),
                     )
                   ],
                   title: Text(
@@ -102,28 +105,6 @@ class _Anumation1State extends State<Anumation1> {
                         ),
                       )),
                 ),
-                floatingActionButton: Builder(builder: (cx) {
-                  return FloatingActionButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(cx,
-                          MaterialPageRoute(builder: (_) {
-                        return Scaffold(
-                          appBar: AppBar(
-                            title: const Text("Catch me"),
-                            centerTitle: true,
-                          ),
-                          body: Center(
-                            child: Text(
-                              "your score is ${cub.i}",
-                              style: const TextStyle(fontSize: 30),
-                            ),
-                          ),
-                        );
-                      }));
-                    },
-                    child: const Icon(Icons.play_arrow),
-                  );
-                }),
               );
             }),
       ),

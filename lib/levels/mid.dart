@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:catch_me/score.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../cubit/cubit.dart';
 import '../cubit/states.dart';
-import '../main.dart';
 
 class Mid extends StatefulWidget {
   const Mid({super.key});
@@ -56,9 +56,8 @@ class _MidState extends State<Mid> {
                     Builder(builder: (cz) {
                       return IconButton(
                           onPressed: () {
-                            Navigator.pushReplacement(cz,
-                                MaterialPageRoute(builder: (_) {
-                              return const Anumation1();
+                            Navigator.push(cz, MaterialPageRoute(builder: (_) {
+                              return Score(score: cub.i + 50);
                             }));
                             cub.restart();
                           },
